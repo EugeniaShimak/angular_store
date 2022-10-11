@@ -1,0 +1,28 @@
+<div *ngFor="let product of productsInCart">
+  <h3>{{product.name}} - {{product.price | currency}}</h3>
+</div>
+<h2>
+  Total: {{total | currency}}
+</h2>
+<p *ngIf="productsInCart&&productsInCart.length">
+  <button (click)="cleanCart()">Clean cart</button>
+</p>
+<p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="address">
+      Address
+    </label>
+    <input id="address" type="text" formControlName="address">
+  </div>
+  <button class="button" type="submit">Purchase</button>
+</form>
